@@ -94,5 +94,5 @@ public class Contrat implements Serializable{
         this.etudiant = etudiant;
     }
 
-
+//teeeeeeeeeest
 }
