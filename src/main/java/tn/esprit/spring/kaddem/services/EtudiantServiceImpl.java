@@ -16,7 +16,7 @@ import tn.esprit.spring.kaddem.repositories.EtudiantRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 @Slf4j
@@ -65,7 +65,7 @@ public class EtudiantServiceImpl implements IEtudiantService{
 return e;
 	}
 
-	public 	List<Etudiant> getEtudiantsByDepartement (Integer idDepartement){
+	public List<Etudiant> getEtudiantsByDepartement (Integer idDepartement){
 return  etudiantRepository.findEtudiantsByDepartement_IdDepart((idDepartement));
 	}
 }
