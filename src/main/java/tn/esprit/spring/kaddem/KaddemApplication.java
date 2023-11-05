@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @EnableScheduling
 @SpringBootApplication
+@RestController
 public class KaddemApplication {
 
 
