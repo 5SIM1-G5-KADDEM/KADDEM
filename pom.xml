@@ -79,6 +79,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>kaddem-1.0</finalName>
     </build>
 
 </project>
