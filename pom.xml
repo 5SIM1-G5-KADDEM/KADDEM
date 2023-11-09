@@ -98,6 +98,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>Kaddem</finalName>
     </build>
-
 </project>
