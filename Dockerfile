@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 8082
-ADD target/kaddem.jar kaddem.jar
+ADD C:/Users/jasser/Documents/GitHub/KADDEM/target/kaddem.jar /kaddem.jar
 ENTRYPOINT ["java","-jar","/kaddem.jar"]
