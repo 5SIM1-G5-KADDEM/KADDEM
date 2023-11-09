@@ -13,7 +13,7 @@ services:
   gestion-station-ski:
     depends_on:
       - mysqldb
-    image: jesser/kaddem
+    image: jasserbs/kaddem
     restart: on-failure
     environment:
       SPRING_APPLICATION_JSON: '{
