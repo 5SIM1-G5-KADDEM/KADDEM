@@ -10,7 +10,7 @@ services:
     volumes:
       - db:/var/lib/mysql
 
-  gestion-station-ski:
+  kaddem:
     depends_on:
       - mysqldb
     image: azizataboubii/azizataboubi_g5_5sim1:1.0
