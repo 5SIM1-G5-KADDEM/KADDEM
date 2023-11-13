@@ -20,8 +20,7 @@ services:
   db:
     container_name: devops_spring_db
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=root
+      - MYSQL_ROOT_PASSWORD=0000
     image: mysql:5.7
     networks:
       - KADDEM
