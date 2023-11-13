@@ -38,10 +38,12 @@ pipeline {
             }
         }
         stage("Docker Compose") {
-            steps {
-                    sh "docker-compose up -d"
+                    steps {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            sh "docker compose up -d"
+                        }
+                    }
                 }
-        }
         stage('Test the code') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
