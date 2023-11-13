@@ -11,14 +11,12 @@ pipeline {
     stages {
         stage('Clean Projects') {
             steps {
-
                     sh "mvn clean"
                 }
             
         }
         stage('Building project') {
             steps {
-
                     sh "mvn validate"
                     sh "mvn compile"
                 }
@@ -26,7 +24,6 @@ pipeline {
         }
         stage('Docker Image') {
             steps {
-
                         script {
                             dockerImage = docker.build registry + ":1.0.0"
                     }
@@ -35,52 +32,40 @@ pipeline {
         }
         stage('Docker Push to hub') {
             steps {
-
                     script {
                         docker.withRegistry('', dockerCredentials) { dockerImage.push() }
                     }
-
             }
         }
         stage("Docker Compose") {
             steps {
-
                     sh "docker compose start"
                 }
-
         }
         stage('Test the code') {
             steps {
-
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                         sh 'mvn test -Dspring.profiles.active=test'
                     }
-
             }
         }
         stage('Jacoco') {
              steps {
-
                     sh "mvn jacoco:report"
                 }
-
         }
         stage('SONAR') {
             steps {
-
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                         sh "mvn sonar:sonar -Dsonar.token=$sonarToken"
                     }
-
             }
         }
         stage('Nexus') {
             steps {
-
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                         sh "mvn deploy -DskipTests"
                     }
-
             }
         }
     }
