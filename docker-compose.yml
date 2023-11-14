@@ -14,7 +14,7 @@ services:
     container_name: spring
     depends_on:
       - db
-    image: ghassendhif/ghassendhif-5sim1-g5
+    image: ghassendhif/ghassendhif-5sim1-g5:1.0.0
     ports:
       - "8082:8082"
     networks:
