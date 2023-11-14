@@ -11,7 +11,7 @@ services:
   backend:
     depends_on:
       - db
-    image: ghassendhif/ghassendhif-5sim1-g5
+    image: ghassendhif/ghassendhif-5sim1-g5:1.0.0
     networks:
       - KADDEM
     container_name: devops_spring
