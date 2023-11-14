@@ -22,6 +22,8 @@ public class ContratRestController {
 	public List<Contrat> getContrats() {
 		List<Contrat> listContrats = contratService.retrieveAllContrats();
 		return listContrats;
+
+		/** **************************************************/
 	}
 	// http://localhost:8089/Kaddem/contrat/retrieve-contrat/8
 	@GetMapping("/retrieve-contrat/{contrat-id}")
