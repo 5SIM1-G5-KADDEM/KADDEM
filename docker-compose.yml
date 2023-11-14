@@ -8,18 +8,23 @@ services:
       - "3306:3306"
     networks:
       - devops-network
+
   spring:
     restart: on-failure
     container_name: spring
     depends_on:
       - db
-    image: ghassendhif/ghassendhif-5sim1-g5
+    image: ghassendhif/ghassendhif-5sim1-g5:specific-tag # Replace 'specific-tag' with the actual tag
     ports:
       - "8082:8082"
     networks:
       - devops-network
     volumes:
       - db:/var/lib/mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/kaddem
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=0000
 
 volumes:
   db:
