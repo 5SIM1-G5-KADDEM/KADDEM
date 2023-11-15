@@ -70,13 +70,5 @@ pipeline {
                     }
             }
         }
-        stage('Sending email'){
-                   steps {
-                    mail bcc: '', body: '''Hello from ghassen,
-                    Devops Pipeline with success.
-                    Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'dhif.ghassen@esprit.tn'
-                    }
-               }
-
     }
 }
