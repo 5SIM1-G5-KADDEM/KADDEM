@@ -22,6 +22,7 @@ public class UniversiteRestController {
 		List<Universite> listUniversites = universiteService.retrieveAllUniversites();
 		return listUniversites;
 	}
+	//d
 	// http://localhost:8089/Kaddem/universite/retrieve-universite/8
 	@GetMapping("/retrieve-universite/{universite-id}")
 	public Universite retrieveUniversite(@PathVariable("universite-id") Integer universiteId) {
