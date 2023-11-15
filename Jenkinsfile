@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Docker Image') {
             steps {
-                        script {
+                    script {
                             dockerImage = docker.build registry + ":1.0.0"
                     }
 
