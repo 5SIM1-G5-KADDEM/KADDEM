@@ -38,7 +38,7 @@ public class SpringBootWithUnitTestMockito {
     Etudiant e = Etudiant.builder().nomE("taboubi").prenomE("aziza").op(Option.valueOf("SIM")).build();
     List<Etudiant> list= new ArrayList<Etudiant>() {
         {
-            add(Etudiant.builder().nomE("mejri").prenomE("mayssag@").op(Option.valueOf("SIM")).build());
+            add(Etudiant.builder().nomE("mejri").prenomE("mayssa").op(Option.valueOf("SIM")).build());
             add(Etudiant.builder().nomE("taboubi").prenomE("fatma").op(Option.valueOf("GAMIX")).build());
         }
     };
