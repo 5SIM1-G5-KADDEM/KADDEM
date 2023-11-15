@@ -10,7 +10,7 @@ services:
     volumes:
       - db:/var/lib/mysql
 
-  gestion-station-ski:
+  kaddem:
     depends_on:
       - mysqldb
     image: maayssaa/mejrimayssa_g5_kaddem
@@ -24,7 +24,7 @@ services:
           "spring.jpa.hibernate.ddl-auto": "update"
       }'
     ports:
-      - "8089:8089"
+      - "8082:8082"
     stdin_open: true
     tty: true
 
