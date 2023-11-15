@@ -28,3 +28,23 @@ services:
       - "3307:3307"
     volumes:
       - db:/var/lib/mysql
+
+  grafana:
+          container_name: grafana
+          image: grafana/grafana:latest
+          ports:
+            - "3000:3000"
+          networks:
+            - KADDEM
+          volumes:
+            - grafana-data:/var/lib/grafana
+          environment:
+            - GF_SECURITY_ADMIN_PASSWORD=admin
+            - GF_SECURITY_ADMIN_USER=admin
+            - GF_DATABASE_TYPE=mysql
+            - GF_DATABASE_HOST=db
+            - GF_DATABASE_PORT=3306
+            - GF_DATABASE_NAME=grafana
+            - GF_DATABASE_USER=grafana
+            - GF_DATABASE_PASSWORD=grafana
+            - GF_SERVER_ROOT_URL=http://localhost:3000
