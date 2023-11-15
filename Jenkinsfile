@@ -65,9 +65,11 @@ pipeline {
         }
         stage('Nexus') {
             steps {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withMaven(maven: 'Maven_Installation_Name', mavenSettingsConfig: 'Your_Maven_Settings_XML_ID') {
                         sh "mvn deploy -DskipTests"
                     }
+                }
             }
         }
     }
