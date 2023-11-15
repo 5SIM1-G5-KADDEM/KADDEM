@@ -40,7 +40,7 @@ pipeline {
         stage("Docker Compose") {
                     steps {
                         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                            sh "docker-compose start"
+                            sh "docker-compose app -d"
                         }
                     }
                 }
