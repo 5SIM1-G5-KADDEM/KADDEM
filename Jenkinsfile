@@ -70,5 +70,18 @@ pipeline {
                     }
             }
         }
+        stage('Prometheus ') {
+                steps {
+
+                        sh 'docker restart prometheus'
+                    }
+                }
+                stage(' Grafana') {
+                steps {
+
+
+                        sh 'docker start grafana'
+                    }
+                }
     }
 }
