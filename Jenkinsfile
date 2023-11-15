@@ -85,3 +85,12 @@ pipeline {
                 }
     }
 }
+
+post{
+        always{
+            mail to: "dhif.ghassen@esprit.tn",
+            subject: "Test Email Jenkins",
+            body: "Pipeline exécuté avec succès !!"
+
+        }
+}
