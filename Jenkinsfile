@@ -70,41 +70,13 @@ pipeline {
                     }
             }
         }
-        stage('Configure Grafana') {
-            steps {
-                script {
-                    def grafanaBaseUrl = 'http://192.168.188.252:3000'
-                    def grafanaApiUrl = "${grafanaBaseUrl}/api/dashboards/db"
+        stage('Sending email'){
+                   steps {
+                    mail bcc: '', body: '''Hello from ghassen,
+                    Devops Pipeline with success.
+                    Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'dhif.ghassen@esprit.tn'
+                    }
+               }
 
-                    // Define the dashboard configuration JSON. Replace this with your actual dashboard configuration.
-                    def dashboardConfig = '''
-                        {
-                            "dashboard": {
-                                "id": null,
-                                "uid": null,
-                                "title": "Your Dashboard Title",
-                                "panels": [],
-                                "editable": true,
-                                "hideControls": false,
-                                "sharedCrosshair": false,
-                                "rows": [],
-                                "schemaVersion": 22,
-                                "version": 0,
-                                "timezone": "browser",
-                                "links": [],
-                                "time": {
-                                    "from": "now-5m",
-                                    "to": "now"
-                                }
-                            },
-                            "overwrite": false
-                        }
-                    '''
-
-                    // Make a POST request to create a new dashboard
-                    sh "curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer YOUR_GRAFANA_API_KEY' -d '${dashboardConfig}' ${grafanaApiUrl}"
-                }
-            }
-        }
     }
 }
