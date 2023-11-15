@@ -16,18 +16,17 @@ services:
     image: maayssaa/mejrimayssa_g5_kaddem
     restart: on-failure
     environment:
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url": "jdbc:mysql://mysqldb:3306/kaddem_db?createDatabaseIfNotExist=true"
+        SPRING_APPLICATION_JSON: '{
+          "spring.datasource.url": "jdbc:mysql://mysqldb:3306/kaddem_db?createDatabaseIfNotExist=true",
           "spring.datasource.username": "root",
-        "spring.datasource.password": ""
-        "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect"
+          "spring.datasource.password": "",
+          "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect",
           "spring.jpa.hibernate.ddl-auto": "update"
-      }'
+        }'
     ports:
-      - "8082:8082"
+        - "8082:8082"
     stdin_open: true
     tty: true
-
 
 volumes:
   db:
