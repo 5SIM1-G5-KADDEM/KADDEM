@@ -22,6 +22,32 @@ pipeline {
                 }
 
         }
+         stage('Test the code') {
+                    steps {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                sh 'mvn test -Dspring.profiles.active=test'
+                            }
+                    }
+                }
+                stage('Jacoco') {
+                     steps {
+                            sh "mvn jacoco:report"
+                        }
+                }
+                stage('SONAR') {
+                    steps {
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                sh "mvn sonar:sonar -Dsonar.token=$sonarToken"
+                            }
+                    }
+                }
+                stage('Nexus') {
+                    steps {
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                sh "mvn deploy -DskipTests"
+                            }
+                    }
+                }
         stage('Docker Image') {
             steps {
                     script {
@@ -44,32 +70,7 @@ pipeline {
                         }
                     }
                 }
-        stage('Test the code') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh 'mvn test -Dspring.profiles.active=test'
-                    }
-            }
-        }
-        stage('Jacoco') {
-             steps {
-                    sh "mvn jacoco:report"
-                }
-        }
-        stage('SONAR') {
-            steps {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh "mvn sonar:sonar -Dsonar.token=$sonarToken"
-                    }
-            }
-        }
-        stage('Nexus') {
-            steps {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh "mvn deploy -DskipTests"
-                    }
-            }
-        }
+
         stage('Prometheus ') {
                 steps {
 
