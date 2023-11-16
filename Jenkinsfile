@@ -90,6 +90,12 @@ pipeline {
                     Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'dhif.ghassen@esprit.tn'
                     }
                }
+
+             stage('Slack'){
+             steps{
+             slackSend(color:'#FFFF00',message:"Build success")
+             }
+             }
     }
 }
 
