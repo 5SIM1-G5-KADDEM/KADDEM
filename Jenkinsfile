@@ -76,21 +76,23 @@ pipeline {
                         sh 'docker restart prometheus'
                     }
                 }
-                stage(' Grafana') {
+        stage(' Grafana') {
                 steps {
 
 
                         sh 'docker start grafana'
                     }
-                }
+        }
+        stage('Sending email'){
+                   steps {
+                    mail bcc: '', body: '''Hello from Ghassen,
+                    Devops Pipeline with success.
+                    Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'dhif.ghassen@esprit.tn'
+                    }
+               }
+
+            }
+        }
     }
 }
 
-post{
-        always{
-            mail to: "dhif.ghassen@esprit.tn",
-            subject: "Test Email Jenkins",
-            body: "Pipeline exécuté avec succès !!"
-
-        }
-}
