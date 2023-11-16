@@ -90,9 +90,6 @@ pipeline {
                     Cordialement''', cc: '', from: '', replyTo: '', subject: 'Devops', to: 'dhif.ghassen@esprit.tn'
                     }
                }
-
-            }
-        }
     }
 }
 
